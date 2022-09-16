@@ -65,19 +65,19 @@ const questions = [
 
 const readMePage = function (data) {
    return `
-   ##title
+   ## Title
    ${data.title}
-   ##description
+   ## Description
    ${data.description}
-   ##installation
+   ## Installation
    ${data.installation}
-   ##usage
+   ## Usage
    ${data.usage}
-   ##contribution
+   ## Contribution
    ${data.contribution}
-   ##test
+   ## Test
    ${data.test}
-   ##license
+   ## License
    ${data.license}
    ## Questions
    If you have any questions, please contact me at ${data.email} or visit my github profile at [${data.github}](https://github.com/${data.github}).
