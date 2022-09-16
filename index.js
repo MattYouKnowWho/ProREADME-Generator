@@ -52,20 +52,50 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(`./dist/${fileName}`, data, err => {
-        if (err) {
-            throw err
-        };
-        console.log('Your README has been created.')
-    });
-};
+// function writeToFile(fileName, data) {
+//     console.log(data)
+//     fs.writeFile("./README.md", data, err => {
+//         if (err) {
+//             throw err
+//         };
+//         console.log('Your README has been created.')
+//     });
+// }
+
+
+const readMePage = function (data) {
+   return `
+   ##title
+   ${data.title}
+   ##description
+   ${data.description}
+   ##installation
+   ${data.installation}
+   ##usage
+   ${data.usage}
+   ##contribution
+   ${data.contribution}
+   ##test
+   ${data.test}
+   ##license
+   ${data.license}
+   ##Questions
+   ## Questions
+   If you have any questions, please contact me at ${data.email} or visit my github profile at [${data.github}](https://github.com/${data.github}).
+   `
+
+}
+
 // TODO: Create a function to initialize app
 function init() {
     inquirer
     .prompt(questions)
     .then((answers) => {
-        writeToFile(answers);
+        function writeFile () {
+            fs.writeFile('README.md', readMePage({ ...answers }), (err) => {if (err) throw err});
+        }
+        console.log({...answers});
+        writeFile();
     })
     .catch((error) => {
         if (error.isTtyError) {
