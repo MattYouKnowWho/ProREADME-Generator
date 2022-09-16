@@ -79,7 +79,6 @@ const readMePage = function (data) {
    ${data.test}
    ##license
    ${data.license}
-   ##Questions
    ## Questions
    If you have any questions, please contact me at ${data.email} or visit my github profile at [${data.github}](https://github.com/${data.github}).
    `
