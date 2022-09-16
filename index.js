@@ -52,11 +52,29 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+function writeToFile(fileName, data) {
+    fs.writeFile(`./dist/${fileName}`, data, err => {
+        if (err) {
+            throw err
+        };
+        console.log('Your README has been created.')
+    });
+};
 // TODO: Create a function to initialize app
-function init() {}
-
+function init() {
+    inquirer
+    .prompt(questions)
+    .then((answers) => {
+        writeToFile(answers);
+    })
+    .catch((error) => {
+        if (error.isTtyError) {
+            console.error('Prompts could not be rendered in current environment!')
+        } else {
+            console.error(`Something went wrong!`, error)
+        }
+    });
+}
 // Function call to initialize app
 init();
 
